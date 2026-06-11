@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Contactez Rose Beauté - Salon de coiffure pour femmes à Casablanca. Horaires, adresse, téléphone, formulaire de contact.">
+    <title>Contact | Rose Beauté - Salon de Coiffure pour Femmes</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        /* ============================================
+           VARIABLES - ROSE BÉBÉ
+        ============================================ */
+        :root {
+            --rose-bg: #FFF5F6;
+            --rose-white: #FFFFFF;
+            --rose-pale: #FDE8E9;
+            --rose-primaire: #F5A9B8;
+            --rose-primaire-fonce: #E8899B;
+            --text-dark: #4A3B3E;
+            --text-gray: #7A6B6E;
+            --text-light: #B5A5A8;
+            --shadow-sm: 0 4px 15px rgba(0,0,0,0.03);
+            --shadow-md: 0 8px 30px rgba(0,0,0,0.05);
+            --shadow-lg: 0 15px 45px rgba(0,0,0,0.08);
+            --shadow-hover: 0 20px 40px rgba(245,169,184,0.25);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--rose-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        ::selection {
+            background: var(--rose-primaire);
+            color: white;
+        }
+        
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        /* ========== TYPOGRAPHY ========== */
+        h1, h2, h3, h4, .logo h1 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-header .subtitle {
+            color: var(--rose-primaire);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 0.75rem;
+            margin-bottom: 15px;
+            display: inline-block;
+            position: relative;
+        }
+        
+        .section-header .subtitle::before,
+        .section-header .subtitle::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 40px;
+            height: 1px;
+            background: var(--rose-primaire);
+            opacity: 0.4;
+        }
+        
+        .section-header .subtitle::before {
+            left: -50px;
+        }
+        
+        .section-header .subtitle::after {
+            right: -50px;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+        
+        .section-header p {
+            color: var(--text-gray);
+            max-width: 650px;
+            margin: 0 auto;
+        }
+        
+        /* ========== BUTTONS ========== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 38px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            cursor: pointer;
+            text-decoration: none;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .btn-primary {
+            background: var(--rose-primaire);
+            color: white;
+            box-shadow: 0 4px 15px rgba(245,169,184,0.3);
+        }
+        
+        .btn-primary:hover {
+            background: var(--rose-primaire-fonce);
+            transform: translateY(-3px);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--rose-primaire);
+            color: var(--rose-primaire);
+        }
+        
+        .btn-outline:hover {
+            background: var(--rose-primaire);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        /* ========== NAVBAR ========== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(15px);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+        
+        .navbar.scrolled {
+            box-shadow: var(--shadow-md);
+            padding: 5px 0;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+        
+        .logo h1 span {
+            color: var(--rose-primaire);
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .logo p {
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            color: var(--text-light);
+            text-transform: uppercase;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.85rem;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--rose-primaire);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover {
+            color: var(--rose-primaire);
+        }
+        
+        .nav-links .btn-reservation {
+            background: var(--rose-primaire);
+            color: white;
+            padding: 8px 22px;
+            border-radius: 50px;
+        }
+        
+        .hamburger {
+            display: none;
+            font-size: 1.6rem;
+            cursor: pointer;
+        }
+        
+        /* ========== HERO SECTION ========== */
+        .hero {
+            min-height: 50vh;
+            background: linear-gradient(115deg, rgba(255,245,246,0.95) 0%, rgba(255,245,246,0.88) 100%), url('https://images.pexels.com/photos/3993449/pexels-photo-3993449.jpeg?w=1600');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            padding-top: 90px;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+        
+        .hero-content h1 span {
+            color: var(--rose-primaire);
+        }
+        
+        .hero-content p {
+            font-size: 1rem;
+            color: var(--text-gray);
+        }
+        
+        /* ========== CONTACT CARDS ========== */
+        .contact-cards {
+            margin-top: -40px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .contact-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+        
+        .contact-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px 25px;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .contact-card i {
+            font-size: 2.2rem;
+            color: var(--rose-primaire);
+            margin-bottom: 15px;
+        }
+        
+        .contact-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .contact-card p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .contact-card a {
+            color: var(--rose-primaire);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        /* ========== MAP SECTION ========== */
+        .map-section {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            margin: 50px 0;
+        }
+        
+        .map-container {
+            width: 100%;
+            height: 400px;
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .map-link {
+            text-align: center;
+            padding: 20px;
+            background: var(--rose-pale);
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .map-link a {
+            color: var(--rose-primaire);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        /* ========== CONTACT WRAPPER ========== */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 50px;
+        }
+        
+        .contact-info {
+            background: white;
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .info-title {
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--rose-primaire);
+            display: inline-block;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            margin-bottom: 28px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #E2E8F0;
+        }
+        
+        .info-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--rose-pale);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .info-item:hover .info-icon {
+            background: var(--rose-primaire);
+        }
+        
+        .info-icon i {
+            font-size: 1.2rem;
+            color: var(--rose-primaire);
+            transition: var(--transition);
+        }
+        
+        .info-item:hover .info-icon i {
+            color: white;
+        }
+        
+        .info-content h4 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+        
+        .info-content p,
+        .info-content a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .info-content a:hover {
+            color: var(--rose-primaire);
+        }
+        
+        .horaires-table {
+            margin-top: 15px;
+        }
+        
+        .horaire-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px dashed #E2E8F0;
+        }
+        
+        .horaire-row:last-child {
+            border-bottom: none;
+        }
+        
+        .horaire-day {
+            font-weight: 600;
+        }
+        
+        .contact-form {
+            background: white;
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .form-title {
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--rose-primaire);
+            display: inline-block;
+        }
+        
+        .form-group {
+            margin-bottom: 22px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--text-dark);
+        }
+        
+        .form-group label .required {
+            color: #D32F2F;
+            margin-left: 5px;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #E2E8F0;
+            border-radius: 16px;
+            font-family: 'Montserrat', sans-serif;
+            transition: var(--transition);
+            font-size: 0.9rem;
+            background: var(--rose-white);
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--rose-primaire);
+            box-shadow: 0 0 0 4px rgba(245,169,184,0.1);
+        }
+        
+        /* ========== SOCIAL SECTION ========== */
+        .social-section {
+            background: white;
+            border-radius: 24px;
+            padding: 50px;
+            text-align: center;
+            margin: 40px 0;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .social-links-large {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .social-link {
+            width: 70px;
+            height: 70px;
+            background: var(--rose-pale);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .social-link i {
+            font-size: 2rem;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-8px);
+            background: var(--rose-primaire);
+            color: white;
+        }
+        
+        .social-link:hover i {
+            color: white;
+        }
+        
+        .social-link.instagram { color: #E4405F; }
+        .social-link.facebook { color: #1877F2; }
+        .social-link.whatsapp { color: #25D366; }
+        .social-link.tiktok { color: #000000; }
+        
+        /* ========== FOOTER ========== */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 50px 0 25px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h4 {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--rose-primaire);
+        }
+        
+        .footer-col p, .footer-col a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            line-height: 2;
+            font-size: 0.85rem;
+        }
+        
+        .footer-col a:hover {
+            color: var(--rose-primaire);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            width: 38px;
+            height: 38px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background: var(--rose-primaire);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.75rem;
+        }
+        
+        /* ========== WHATSAPP FLOATING ========== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 100;
+            animation: pulse 2s infinite;
+        }
+        
+        .whatsapp-float a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #25D366;
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+            transition: var(--transition);
+        }
+        
+        .whatsapp-float a:hover {
+            transform: scale(1.05);
+            background: #128C7E;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        /* ========== BACK TO TOP ========== */
+        .back-to-top {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 45px;
+            height: 45px;
+            background: var(--rose-primaire);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 99;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* ========== TOAST ========== */
+        .toast-message {
+            position: fixed;
+            top: 100px;
+            right: 30px;
+            background: #2E7D32;
+            color: white;
+            padding: 16px 24px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 1000;
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .toast-message.show {
+            transform: translateX(0);
+        }
+        
+        @media (max-width: 992px) {
+            .contact-wrapper { grid-template-columns: 1fr; }
+            .hero-content h1 { font-size: 2rem; }
+            .section-header h2 { font-size: 1.8rem; }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background: white;
+                padding: 25px;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                text-align: center;
+                gap: 15px;
+                box-shadow: var(--shadow-lg);
+            }
+            .nav-links.active { display: flex; }
+            .hamburger { display: block; }
+            .map-container { height: 250px; }
+            .contact-cards-grid { grid-template-columns: 1fr; }
+            .contact-info, .contact-form { padding: 25px; }
+            .social-link { width: 55px; height: 55px; }
+            .social-link i { font-size: 1.5rem; }
+            .footer-grid { text-align: center; }
+            .footer-col h4::after { left: 50%; transform: translateX(-50%); }
+            .social-links { justify-content: center; }
+        }
+        
+        [data-aos] {
+            opacity: 0;
+            transition: all 0.8s ease;
+        }
+        
+        [data-aos].aos-animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        [data-aos="fade-up"] {
+            transform: translateY(40px);
+        }
+        
+        [data-aos="zoom-in"] {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body>
+
+<!-- ============================================
+     NAVBAR
+============================================ -->
+<nav class="navbar" id="navbar">
+    <div class="nav-container">
+        <div class="logo">
+            <h1>Rose<span>Beauté</span></h1>
+            <p>SALON DE COIFFURE</p>
+        </div>
+        <div class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="galerie.html">Galerie</a></li>
+            <li><a href="reservation.html">Réservation</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- ============================================
+     HERO SECTION
+============================================ -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-content" data-aos="fade-up">
+            <h1>Contactez<span>nous</span></h1>
+            <p>Une question ? Besoin d'un renseignement ? Notre équipe est à votre disposition</p>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     CONTACT CARDS
+============================================ -->
+<div class="container contact-cards">
+    <div class="contact-cards-grid" data-aos="fade-up">
+        <div class="contact-card">
+            <i class="fas fa-map-marker-alt"></i>
+            <h3>Adresse</h3>
+            <p>Angle Boulevard Mohammed VI et Rue Azilal, Casablanca</p>
+            <a href="https://maps.google.com/?q=Casablanca" target="_blank">Voir sur Maps →</a>
+        </div>
+        <div class="contact-card">
+            <i class="fas fa-phone-alt"></i>
+            <h3>Téléphone</h3>
+            <p>Appelez-nous directement</p>
+            <a href="tel:0522334455">05 22 33 44 55</a>
+        </div>
+        <div class="contact-card">
+            <i class="fab fa-whatsapp"></i>
+            <h3>WhatsApp</h3>
+            <p>Réponse rapide</p>
+            <a href="https://wa.me/212612345678" target="_blank">06 12 34 56 78</a>
+        </div>
+        <div class="contact-card">
+            <i class="fas fa-envelope"></i>
+            <h3>Email</h3>
+            <p>Envoyez-nous un message</p>
+            <a href="mailto:contact@rosebeaute.ma">contact@rosebeaute.ma</a>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     MAP SECTION
+============================================ -->
+<div class="container">
+    <div class="map-section" data-aos="fade-up">
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d106245.99554842268!2d-7.632477710286569!3d33.573109999999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7cd4778aa113b%3A0xb06c1d84f310fd3!2sCasablanca!5e0!3m2!1sfr!2sma!4v1700000000000!5m2!1sfr!2sma" 
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>
+        </div>
+        <div class="map-link">
+            <i class="fas fa-external-link-alt"></i>
+            <a href="https://www.google.com/maps/place/Casablanca/" target="_blank">Ouvrir dans Google Maps <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     CONTACT WRAPPER
+============================================ -->
+<div class="container">
+    <div class="contact-wrapper" data-aos="fade-up">
+        <div class="contact-info">
+            <h3 class="info-title"><i class="fas fa-info-circle"></i> Nos coordonnées</h3>
+            
+            <div class="info-item">
+                <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                <div class="info-content">
+                    <h4>Adresse</h4>
+                    <p>Angle Boulevard Mohammed VI et Rue Azilal, Casablanca, Maroc</p>
+                </div>
+            </div>
+            
+            <div class="info-item">
+                <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
+                <div class="info-content">
+                    <h4>Téléphone</h4>
+                    <p><a href="tel:0522334455">05 22 33 44 55</a></p>
+                </div>
+            </div>
+            
+            <div class="info-item">
+                <div class="info-icon"><i class="fab fa-whatsapp"></i></div>
+                <div class="info-content">
+                    <h4>WhatsApp</h4>
+                    <p><a href="https://wa.me/212612345678" target="_blank">06 12 34 56 78</a></p>
+                </div>
+            </div>
+            
+            <div class="info-item">
+                <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                <div class="info-content">
+                    <h4>Email</h4>
+                    <p><a href="mailto:contact@rosebeaute.ma">contact@rosebeaute.ma</a></p>
+                </div>
+            </div>
+            
+            <div class="info-item">
+                <div class="info-icon"><i class="fas fa-clock"></i></div>
+                <div class="info-content">
+                    <h4>Horaires d'ouverture</h4>
+                    <div class="horaires-table">
+                        <div class="horaire-row"><span class="horaire-day">Mardi - Samedi</span><span>09:00 - 20:00</span></div>
+                        <div class="horaire-row"><span class="horaire-day">Dimanche</span><span>10:00 - 18:00</span></div>
+                        <div class="horaire-row"><span class="horaire-day">Lundi</span><span>Fermé</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="contact-form">
+            <h3 class="form-title"><i class="fas fa-paper-plane"></i> Envoyez-nous un message</h3>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label>Nom complet <span class="required">*</span></label>
+                    <input type="text" id="nom" placeholder="Votre nom et prénom" required>
+                </div>
+                <div class="form-group">
+                    <label>Email <span class="required">*</span></label>
+                    <input type="email" id="email" placeholder="votre@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Téléphone</label>
+                    <input type="tel" id="telephone" placeholder="Votre numéro de téléphone">
+                </div>
+                <div class="form-group">
+                    <label>Sujet <span class="required">*</span></label>
+                    <select id="sujet" required>
+                        <option value="">Sélectionnez un sujet</option>
+                        <option>Information sur les prestations</option>
+                        <option>Réservation</option>
+                        <option>Réclamation</option>
+                        <option>Partenariat</option>
+                        <option>Autre</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Message <span class="required">*</span></label>
+                    <textarea id="message" rows="5" placeholder="Votre message..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width:100%;">
+                    <i class="fas fa-paper-plane"></i> Envoyer le message
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     SOCIAL SECTION
+============================================ -->
+<div class="container">
+    <div class="social-section" data-aos="zoom-in">
+        <h3>Suivez-nous sur les réseaux</h3>
+        <p>Restez connecté avec Rose Beauté</p>
+        <div class="social-links-large">
+            <a href="#" class="social-link instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://wa.me/212612345678" class="social-link whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" class="social-link tiktok" target="_blank"><i class="fab fa-tiktok"></i></a>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     FOOTER
+============================================ -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Rose Beauté</h4>
+                <p>Salon de coiffure d'exception dédié à la beauté et au bien-être des femmes.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Horaires</h4>
+                <p>Mardi - Samedi: 09:00 - 20:00</p>
+                <p>Dimanche: 10:00 - 18:00</p>
+                <p>Lundi: Fermé</p>
+            </div>
+            <div class="footer-col">
+                <h4>Liens rapides</h4>
+                <p><a href="index.html">Accueil</a></p>
+                <p><a href="services.html">Services</a></p>
+                <p><a href="galerie.html">Galerie</a></p>
+                <p><a href="reservation.html">Réservation</a></p>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p><i class="fas fa-phone"></i> 05 22 33 44 55</p>
+                <p><i class="fab fa-whatsapp"></i> 06 12 34 56 78</p>
+                <p><i class="fas fa-envelope"></i> contact@rosebeaute.ma</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2026 Rose Beauté - Salon de Coiffure pour Femmes | Tous droits réservés</p>
+        </div>
+    </div>
+</footer>
+
+<!-- ============================================
+     WHATSAPP FLOATING
+============================================ -->
+<div class="whatsapp-float">
+    <a href="https://wa.me/212612345678?text=Bonjour%20Rose%20Beaut%C3%A9%2C%20je%20souhaite%20avoir%20plus%20d%27informations" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <span>Contactez-nous</span>
+    </a>
+</div>
+
+<!-- ============================================
+     BACK TO TOP
+============================================ -->
+<div class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+</div>
+
+<!-- ============================================
+     TOAST MESSAGE
+============================================ -->
+<div id="toastMessage" class="toast-message">
+    <i class="fas fa-check-circle"></i>
+    <span id="toastText">Message envoyé !</span>
+</div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 800, once: true });
+    
+    // ========== NAVBAR ==========
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) navbar.classList.add('scrolled');
+        else navbar.classList.remove('scrolled');
+    });
+    
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
+    document.addEventListener('click', (e) => {
+        if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) navLinks.classList.remove('active');
+    });
+    
+    // ========== BACK TO TOP ==========
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) backToTop.classList.add('show');
+        else backToTop.classList.remove('show');
+    });
+    backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    
+    // ========== FORM SUBMIT ==========
+    function showToast(message) {
+        const toast = document.getElementById('toastMessage');
+        const toastText = document.getElementById('toastText');
+        toastText.innerText = message;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 4000);
+    }
+    
+    const contactForm = document.getElementById('contactForm');
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const nom = document.getElementById('nom').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const sujet = document.getElementById('sujet').value;
+        const message = document.getElementById('message').value.trim();
+        
+        if (!nom || !email || !sujet || !message) {
+            alert('Veuillez remplir tous les champs obligatoires');
+            return;
+        }
+        
+        if (!email.includes('@')) {
+            alert('Veuillez entrer un email valide');
+            return;
+        }
+        
+        const contactMessage = {
+            id: Date.now(),
+            date: new Date().toLocaleString(),
+            nom: nom,
+            email: email,
+            telephone: document.getElementById('telephone').value,
+            sujet: sujet,
+            message: message,
+            lu: false
+        };
+        
+        let messages = JSON.parse(localStorage.getItem('contactMessages_rose') || '[]');
+        messages.push(contactMessage);
+        localStorage.setItem('contactMessages_rose', JSON.stringify(messages));
+        
+        showToast('✅ Votre message a été envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.');
+        contactForm.reset();
+    });
+</script>
+</body>
+</html>
