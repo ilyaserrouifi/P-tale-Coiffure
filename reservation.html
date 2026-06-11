@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Prenez rendez-vous en ligne - Rose Beauté. Salon de coiffure pour femmes à Casablanca. Réservation facile et rapide.">
+    <title>Réservation | Rose Beauté - Salon de Coiffure pour Femmes</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        /* ============================================
+           VARIABLES - ROSE BÉBÉ
+        ============================================ */
+        :root {
+            --rose-bg: #FFF5F6;
+            --rose-white: #FFFFFF;
+            --rose-pale: #FDE8E9;
+            --rose-primaire: #F5A9B8;
+            --rose-primaire-fonce: #E8899B;
+            --text-dark: #4A3B3E;
+            --text-gray: #7A6B6E;
+            --text-light: #B5A5A8;
+            --success-green: #2E7D32;
+            --shadow-sm: 0 4px 15px rgba(0,0,0,0.03);
+            --shadow-md: 0 8px 30px rgba(0,0,0,0.05);
+            --shadow-lg: 0 15px 45px rgba(0,0,0,0.08);
+            --shadow-hover: 0 20px 40px rgba(245,169,184,0.25);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--rose-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        /* ========== TYPOGRAPHY ========== */
+        h1, h2, h3, .logo h1 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-header .subtitle {
+            color: var(--rose-primaire);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 0.75rem;
+            margin-bottom: 15px;
+            display: inline-block;
+            position: relative;
+        }
+        
+        .section-header .subtitle::before,
+        .section-header .subtitle::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 40px;
+            height: 1px;
+            background: var(--rose-primaire);
+            opacity: 0.4;
+        }
+        
+        .section-header .subtitle::before {
+            left: -50px;
+        }
+        
+        .section-header .subtitle::after {
+            right: -50px;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+        
+        /* ========== BUTTONS ========== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 38px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            cursor: pointer;
+            text-decoration: none;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .btn-primary {
+            background: var(--rose-primaire);
+            color: white;
+            box-shadow: 0 4px 15px rgba(245,169,184,0.3);
+        }
+        
+        .btn-primary:hover {
+            background: var(--rose-primaire-fonce);
+            transform: translateY(-3px);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--rose-primaire);
+            color: var(--rose-primaire);
+        }
+        
+        .btn-outline:hover {
+            background: var(--rose-primaire);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        /* ========== NAVBAR ========== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(15px);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+        
+        .navbar.scrolled {
+            box-shadow: var(--shadow-md);
+            padding: 5px 0;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+        
+        .logo h1 span {
+            color: var(--rose-primaire);
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .logo p {
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            color: var(--text-light);
+            text-transform: uppercase;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.85rem;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--rose-primaire);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover {
+            color: var(--rose-primaire);
+        }
+        
+        .hamburger {
+            display: none;
+            font-size: 1.6rem;
+            cursor: pointer;
+        }
+        
+        /* ========== HERO SECTION ========== */
+        .hero {
+            min-height: 50vh;
+            background: linear-gradient(115deg, rgba(255,245,246,0.95) 0%, rgba(255,245,246,0.88) 100%), url('https://images.pexels.com/photos/3993449/pexels-photo-3993449.jpeg?w=1600');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            padding-top: 90px;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+        
+        .hero-content h1 span {
+            color: var(--rose-primaire);
+        }
+        
+        .hero-content p {
+            font-size: 1rem;
+            color: var(--text-gray);
+        }
+        
+        /* ========== FORM STYLES ========== */
+        .form-container {
+            background: white;
+            border-radius: 30px;
+            padding: 50px;
+            box-shadow: var(--shadow-lg);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--text-dark);
+        }
+        
+        .form-group label .required {
+            color: #D32F2F;
+            margin-left: 5px;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #E2E8F0;
+            border-radius: 16px;
+            font-family: 'Montserrat', sans-serif;
+            transition: var(--transition);
+            font-size: 0.9rem;
+            background: var(--rose-white);
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--rose-primaire);
+            box-shadow: 0 0 0 4px rgba(245,169,184,0.1);
+        }
+        
+        .error-message {
+            color: #D32F2F;
+            font-size: 0.7rem;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .error-message.show {
+            display: block;
+        }
+        
+        .service-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .service-option {
+            border: 2px solid #E2E8F0;
+            border-radius: 16px;
+            padding: 15px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .service-option:hover {
+            border-color: var(--rose-primaire);
+        }
+        
+        .service-option.selected {
+            border-color: var(--rose-primaire);
+            background: rgba(245,169,184,0.05);
+        }
+        
+        .service-option .service-info h4 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+        
+        .service-option .service-info p {
+            font-size: 0.75rem;
+            color: var(--text-gray);
+        }
+        
+        .service-option .service-price {
+            font-weight: 700;
+            color: var(--rose-primaire);
+        }
+        
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 12px;
+            margin-top: 15px;
+        }
+        
+        .time-slot {
+            background: var(--rose-bg);
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.85rem;
+        }
+        
+        .time-slot:hover {
+            border-color: var(--rose-primaire);
+            background: rgba(245,169,184,0.1);
+        }
+        
+        .time-slot.selected {
+            background: var(--rose-primaire);
+            color: white;
+            border-color: var(--rose-primaire);
+        }
+        
+        /* ========== SUMMARY SECTION ========== */
+        .summary-section {
+            background: var(--rose-bg);
+            border-radius: 20px;
+            padding: 25px;
+            margin-top: 30px;
+        }
+        
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .summary-item:last-child {
+            border-bottom: none;
+        }
+        
+        .summary-total {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--rose-primaire);
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 2px dashed var(--rose-primaire);
+        }
+        
+        /* ========== TOAST ========== */
+        .toast-message {
+            position: fixed;
+            top: 100px;
+            right: 30px;
+            background: var(--success-green);
+            color: white;
+            padding: 16px 24px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 1000;
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .toast-message.show {
+            transform: translateX(0);
+        }
+        
+        /* ========== FOOTER ========== */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 50px 0 25px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h4 {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--rose-primaire);
+        }
+        
+        .footer-col p, .footer-col a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            line-height: 2;
+            font-size: 0.85rem;
+        }
+        
+        .footer-col a:hover {
+            color: var(--rose-primaire);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            width: 38px;
+            height: 38px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background: var(--rose-primaire);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.75rem;
+        }
+        
+        /* ========== WHATSAPP FLOATING ========== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 100;
+            animation: pulse 2s infinite;
+        }
+        
+        .whatsapp-float a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #25D366;
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+            transition: var(--transition);
+        }
+        
+        .whatsapp-float a:hover {
+            transform: scale(1.05);
+            background: #128C7E;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        /* ========== BACK TO TOP ========== */
+        .back-to-top {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 45px;
+            height: 45px;
+            background: var(--rose-primaire);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 99;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        @media (max-width: 992px) {
+            .form-grid { grid-template-columns: 1fr; }
+            .form-group.full-width { grid-column: span 1; }
+            .hero-content h1 { font-size: 2rem; }
+            .section-header h2 { font-size: 1.8rem; }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background: white;
+                padding: 25px;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                text-align: center;
+                gap: 15px;
+                box-shadow: var(--shadow-lg);
+            }
+            .nav-links.active { display: flex; }
+            .hamburger { display: block; }
+            .form-container { padding: 25px; }
+            .service-option { flex-direction: column; text-align: center; gap: 10px; }
+            .footer-grid { text-align: center; }
+            .footer-col h4::after { left: 50%; transform: translateX(-50%); }
+            .social-links { justify-content: center; }
+        }
+        
+        [data-aos] {
+            opacity: 0;
+            transition: all 0.8s ease;
+        }
+        
+        [data-aos].aos-animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        [data-aos="fade-up"] {
+            transform: translateY(40px);
+        }
+    </style>
+</head>
+<body>
+
+<!-- ============================================
+     NAVBAR
+============================================ -->
+<nav class="navbar" id="navbar">
+    <div class="nav-container">
+        <div class="logo">
+            <h1>Rose<span>Beauté</span></h1>
+            <p>SALON DE COIFFURE</p>
+        </div>
+        <div class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="galerie.html">Galerie</a></li>
+            <li><a href="reservation.html" class="active">Réservation</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- ============================================
+     HERO SECTION
+============================================ -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-content" data-aos="fade-up">
+            <h1>Prenez <span>Rendez-vous</span></h1>
+            <p>Réservez votre créneau en quelques clics</p>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     FORMULAIRE DE RÉSERVATION
+============================================ -->
+<div class="container">
+    <div class="form-container" data-aos="fade-up">
+        <form id="reservationForm">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Nom complet <span class="required">*</span></label>
+                    <input type="text" id="nom" placeholder="Votre nom et prénom" required>
+                    <div class="error-message" id="errorNom">Veuillez entrer votre nom</div>
+                </div>
+                <div class="form-group">
+                    <label>Email <span class="required">*</span></label>
+                    <input type="email" id="email" placeholder="votre@email.com" required>
+                    <div class="error-message" id="errorEmail">Email invalide</div>
+                </div>
+                <div class="form-group">
+                    <label>Téléphone <span class="required">*</span></label>
+                    <input type="tel" id="telephone" placeholder="06 XX XX XX XX" required>
+                    <div class="error-message" id="errorTel">Numéro invalide</div>
+                </div>
+                <div class="form-group">
+                    <label>Date <span class="required">*</span></label>
+                    <input type="date" id="date" min="<?php echo date('Y-m-d'); ?>" required>
+                    <div class="error-message" id="errorDate">Veuillez choisir une date</div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Service souhaité <span class="required">*</span></label>
+                <div class="service-options" id="serviceOptions">
+                    <div class="service-option" data-service="Coupe femme" data-price="150">
+                        <div class="service-info">
+                            <h4>✂️ Coupe femme</h4>
+                            <p>Coupe signature personnalisée</p>
+                        </div>
+                        <div class="service-price">150 DH</div>
+                    </div>
+                    <div class="service-option" data-service="Brushing" data-price="80">
+                        <div class="service-info">
+                            <h4>💨 Brushing</h4>
+                            <p>Brushing haute tenue</p>
+                        </div>
+                        <div class="service-price">80 DH</div>
+                    </div>
+                    <div class="service-option" data-service="Coloration" data-price="300">
+                        <div class="service-info">
+                            <h4>🎨 Coloration</h4>
+                            <p>Coloration, balayage, mèches</p>
+                        </div>
+                        <div class="service-price">300 DH</div>
+                    </div>
+                    <div class="service-option" data-service="Lissage brésilien" data-price="600">
+                        <div class="service-info">
+                            <h4>✨ Lissage brésilien</h4>
+                            <p>Cheveux lisses et brillants</p>
+                        </div>
+                        <div class="service-price">600 DH</div>
+                    </div>
+                    <div class="service-option" data-service="Soin kératine" data-price="500">
+                        <div class="service-info">
+                            <h4>💎 Soin kératine</h4>
+                            <p>Traitement réparateur</p>
+                        </div>
+                        <div class="service-price">500 DH</div>
+                    </div>
+                    <div class="service-option" data-service="Coiffure mariage" data-price="800">
+                        <div class="service-info">
+                            <h4>👰 Coiffure mariage</h4>
+                            <p>Forfait spéciale mariée</p>
+                        </div>
+                        <div class="service-price">800 DH</div>
+                    </div>
+                </div>
+                <input type="hidden" id="serviceChoisi" value="">
+                <input type="hidden" id="prixChoisi" value="">
+                <div class="error-message" id="errorService">Veuillez sélectionner un service</div>
+            </div>
+            
+            <div class="form-group">
+                <label>Créneau horaire <span class="required">*</span></label>
+                <div class="time-slots" id="timeSlots">
+                    <div class="time-slot" data-time="09:00">09:00</div>
+                    <div class="time-slot" data-time="10:00">10:00</div>
+                    <div class="time-slot" data-time="11:00">11:00</div>
+                    <div class="time-slot" data-time="14:00">14:00</div>
+                    <div class="time-slot" data-time="15:00">15:00</div>
+                    <div class="time-slot" data-time="16:00">16:00</div>
+                    <div class="time-slot" data-time="17:00">17:00</div>
+                    <div class="time-slot" data-time="18:00">18:00</div>
+                </div>
+                <input type="hidden" id="horaireChoisi" value="">
+                <div class="error-message" id="errorHoraire">Veuillez sélectionner un horaire</div>
+            </div>
+            
+            <div class="form-group full-width">
+                <label>Message (optionnel)</label>
+                <textarea id="message" rows="3" placeholder="Informations complémentaires..."></textarea>
+            </div>
+            
+            <div class="summary-section">
+                <h4 style="margin-bottom: 15px;">📋 Récapitulatif</h4>
+                <div class="summary-item">
+                    <span>Service :</span>
+                    <strong id="summaryService">-</strong>
+                </div>
+                <div class="summary-item">
+                    <span>Prix :</span>
+                    <strong id="summaryPrix">-</strong>
+                </div>
+                <div class="summary-item">
+                    <span>Date :</span>
+                    <strong id="summaryDate">-</strong>
+                </div>
+                <div class="summary-item">
+                    <span>Horaire :</span>
+                    <strong id="summaryHoraire">-</strong>
+                </div>
+                <div class="summary-total">
+                    <span>Total :</span>
+                    <strong id="summaryTotal">-</strong>
+                </div>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" style="width:100%; margin-top: 30px;">
+                <i class="fas fa-calendar-check"></i> Confirmer la réservation
+            </button>
+        </form>
+    </div>
+</div>
+
+<!-- ============================================
+     FOOTER
+============================================ -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Rose Beauté</h4>
+                <p>Salon de coiffure d'exception dédié à la beauté et au bien-être des femmes.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Horaires</h4>
+                <p>Mardi - Samedi: 09:00 - 20:00</p>
+                <p>Dimanche: 10:00 - 18:00</p>
+                <p>Lundi: Fermé</p>
+            </div>
+            <div class="footer-col">
+                <h4>Liens rapides</h4>
+                <p><a href="index.html">Accueil</a></p>
+                <p><a href="services.html">Services</a></p>
+                <p><a href="galerie.html">Galerie</a></p>
+                <p><a href="reservation.html">Réservation</a></p>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p><i class="fas fa-phone"></i> 05 22 33 44 55</p>
+                <p><i class="fab fa-whatsapp"></i> 06 12 34 56 78</p>
+                <p><i class="fas fa-envelope"></i> contact@rosebeaute.ma</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2026 Rose Beauté - Salon de Coiffure pour Femmes | Tous droits réservés</p>
+        </div>
+    </div>
+</footer>
+
+<!-- ============================================
+     WHATSAPP FLOATING
+============================================ -->
+<div class="whatsapp-float">
+    <a href="https://wa.me/212612345678?text=Bonjour%20Rose%20Beaut%C3%A9%2C%20je%20souhaite%20prendre%20rendez-vous" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <span>Réservation WhatsApp</span>
+    </a>
+</div>
+
+<!-- ============================================
+     BACK TO TOP
+============================================ -->
+<div class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+</div>
+
+<!-- ============================================
+     TOAST MESSAGE
+============================================ -->
+<div id="toastMessage" class="toast-message">
+    <i class="fas fa-check-circle"></i>
+    <span id="toastText">Réservation enregistrée !</span>
+</div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 800, once: true });
+    
+    // ========== NAVBAR ==========
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) navbar.classList.add('scrolled');
+        else navbar.classList.remove('scrolled');
+    });
+    
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
+    document.addEventListener('click', (e) => {
+        if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) navLinks.classList.remove('active');
+    });
+    
+    // ========== BACK TO TOP ==========
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) backToTop.classList.add('show');
+        else backToTop.classList.remove('show');
+    });
+    backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    
+    // ========== SERVICE SELECTION ==========
+    let selectedService = null;
+    let selectedPrice = null;
+    let selectedTime = null;
+    
+    document.querySelectorAll('.service-option').forEach(option => {
+        option.addEventListener('click', function() {
+            document.querySelectorAll('.service-option').forEach(opt => opt.classList.remove('selected'));
+            this.classList.add('selected');
+            selectedService = this.getAttribute('data-service');
+            selectedPrice = this.getAttribute('data-price');
+            document.getElementById('serviceChoisi').value = selectedService;
+            document.getElementById('prixChoisi').value = selectedPrice;
+            document.getElementById('summaryService').innerText = selectedService;
+            document.getElementById('summaryPrix').innerText = selectedPrice + ' DH';
+            document.getElementById('summaryTotal').innerText = selectedPrice + ' DH';
+            document.getElementById('errorService').classList.remove('show');
+        });
+    });
+    
+    // ========== TIME SELECTION ==========
+    document.querySelectorAll('.time-slot').forEach(slot => {
+        slot.addEventListener('click', function() {
+            document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+            this.classList.add('selected');
+            selectedTime = this.getAttribute('data-time');
+            document.getElementById('horaireChoisi').value = selectedTime;
+            document.getElementById('summaryHoraire').innerText = selectedTime;
+            document.getElementById('errorHoraire').classList.remove('show');
+        });
+    });
+    
+    // ========== DATE SELECTION ==========
+    document.getElementById('date').addEventListener('change', (e) => {
+        const date = e.target.value;
+        if (date) {
+            const formattedDate = new Date(date).toLocaleDateString('fr-FR');
+            document.getElementById('summaryDate').innerText = formattedDate;
+            document.getElementById('errorDate').classList.remove('show');
+        }
+    });
+    
+    // ========== VALIDATION ==========
+    function validateForm() {
+        let isValid = true;
+        
+        const nom = document.getElementById('nom').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const telephone = document.getElementById('telephone').value.trim();
+        const date = document.getElementById('date').value;
+        
+        if (!nom) { document.getElementById('errorNom').classList.add('show'); isValid = false; }
+        else { document.getElementById('errorNom').classList.remove('show'); }
+        
+        if (!email || !email.includes('@')) { document.getElementById('errorEmail').classList.add('show'); isValid = false; }
+        else { document.getElementById('errorEmail').classList.remove('show'); }
+        
+        if (!telephone || telephone.length < 10) { document.getElementById('errorTel').classList.add('show'); isValid = false; }
+        else { document.getElementById('errorTel').classList.remove('show'); }
+        
+        if (!date) { document.getElementById('errorDate').classList.add('show'); isValid = false; }
+        else { document.getElementById('errorDate').classList.remove('show'); }
+        
+        if (!selectedService) { document.getElementById('errorService').classList.add('show'); isValid = false; }
+        if (!selectedTime) { document.getElementById('errorHoraire').classList.add('show'); isValid = false; }
+        
+        return isValid;
+    }
+    
+    // ========== TOAST ==========
+    function showToast(message) {
+        const toast = document.getElementById('toastMessage');
+        const toastText = document.getElementById('toastText');
+        toastText.innerText = message;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 4000);
+    }
+    
+    // ========== SUBMIT ==========
+    function submitReservation() {
+        if (!validateForm()) return;
+        
+        const reservation = {
+            id: Date.now(),
+            date: new Date().toLocaleString(),
+            nom: document.getElementById('nom').value,
+            email: document.getElementById('email').value,
+            telephone: document.getElementById('telephone').value,
+            service: selectedService,
+            prix: selectedPrice,
+            dateReservation: document.getElementById('date').value,
+            horaire: selectedTime,
+            message: document.getElementById('message').value,
+            statut: 'En attente'
+        };
+        
+        let reservations = JSON.parse(localStorage.getItem('reservations_rose') || '[]');
+        reservations.push(reservation);
+        localStorage.setItem('reservations_rose', JSON.stringify(reservations));
+        
+        showToast('✅ Votre réservation a été enregistrée ! Nous vous contacterons sous 24h pour confirmation.');
+        
+        setTimeout(() => {
+            window.location.href = 'index.html';
+        }, 3000);
+    }
+    
+    document.getElementById('reservationForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        submitReservation();
+    });
+</script>
+</body>
+</html>
