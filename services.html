@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Nos services - Rose Beauté. Salon de coiffure pour femmes à Casablanca. Coupe, couleur, brushing, lissage brésilien, coiffure mariage.">
+    <title>Nos Services | Rose Beauté - Salon de Coiffure pour Femmes</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        /* ============================================
+           VARIABLES - ROSE BÉBÉ FÉMININ
+        ============================================ */
+        :root {
+            --rose-bg: #FFF5F6;
+            --rose-white: #FFFFFF;
+            --rose-pale: #FDE8E9;
+            --rose-primaire: #F5A9B8;
+            --rose-primaire-fonce: #E8899B;
+            --rose-secondaire: #FFD1DC;
+            --gold-rose: #E8A9B4;
+            --text-dark: #4A3B3E;
+            --text-gray: #7A6B6E;
+            --text-light: #B5A5A8;
+            --shadow-sm: 0 4px 15px rgba(0,0,0,0.03);
+            --shadow-md: 0 8px 30px rgba(0,0,0,0.05);
+            --shadow-lg: 0 15px 45px rgba(0,0,0,0.08);
+            --shadow-hover: 0 20px 40px rgba(245,169,184,0.25);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--rose-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        ::selection {
+            background: var(--rose-primaire);
+            color: white;
+        }
+        
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        /* ========== TYPOGRAPHY ========== */
+        h1, h2, h3, h4, .logo h1 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-header .subtitle {
+            color: var(--rose-primaire);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 0.75rem;
+            margin-bottom: 15px;
+            display: inline-block;
+            position: relative;
+        }
+        
+        .section-header .subtitle::before,
+        .section-header .subtitle::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 40px;
+            height: 1px;
+            background: var(--rose-primaire);
+            opacity: 0.4;
+        }
+        
+        .section-header .subtitle::before {
+            left: -50px;
+        }
+        
+        .section-header .subtitle::after {
+            right: -50px;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+        
+        .section-header p {
+            color: var(--text-gray);
+            max-width: 650px;
+            margin: 0 auto;
+        }
+        
+        /* ========== BUTTONS ========== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: var(--transition);
+            cursor: pointer;
+            text-decoration: none;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .btn-primary {
+            background: var(--rose-primaire);
+            color: white;
+            box-shadow: 0 4px 15px rgba(245,169,184,0.3);
+        }
+        
+        .btn-primary:hover {
+            background: var(--rose-primaire-fonce);
+            transform: translateY(-3px);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--rose-primaire);
+            color: var(--rose-primaire);
+        }
+        
+        .btn-outline:hover {
+            background: var(--rose-primaire);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        /* ========== NAVBAR ========== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(15px);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+        
+        .navbar.scrolled {
+            box-shadow: var(--shadow-md);
+            padding: 5px 0;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+        
+        .logo h1 span {
+            color: var(--rose-primaire);
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .logo p {
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            color: var(--text-light);
+            text-transform: uppercase;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.85rem;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--rose-primaire);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover {
+            color: var(--rose-primaire);
+        }
+        
+        .nav-links .btn-reservation {
+            background: var(--rose-primaire);
+            color: white;
+            padding: 8px 22px;
+            border-radius: 50px;
+        }
+        
+        .hamburger {
+            display: none;
+            font-size: 1.6rem;
+            cursor: pointer;
+        }
+        
+        /* ========== HERO SECTION ========== */
+        .hero {
+            min-height: 50vh;
+            background: linear-gradient(115deg, rgba(255,245,246,0.95) 0%, rgba(255,245,246,0.88) 100%), url('https://images.pexels.com/photos/3993449/pexels-photo-3993449.jpeg?w=1600');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            padding-top: 90px;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+        
+        .hero-content h1 span {
+            color: var(--rose-primaire);
+        }
+        
+        .hero-content p {
+            font-size: 1rem;
+            color: var(--text-gray);
+        }
+        
+        /* ========== SERVICES DETAILS ========== */
+        .services-details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 35px;
+        }
+        
+        .service-detail-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .service-detail-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .service-detail-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .service-detail-card:hover .service-detail-img {
+            transform: scale(1.05);
+        }
+        
+        .service-detail-content {
+            padding: 30px;
+        }
+        
+        .service-detail-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+        
+        .service-detail-content p {
+            color: var(--text-gray);
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+        
+        .service-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--rose-primaire);
+            margin: 15px 0;
+        }
+        
+        .service-features {
+            list-style: none;
+            margin-top: 15px;
+        }
+        
+        .service-features li {
+            padding: 8px 0;
+            color: var(--text-gray);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .service-features li i {
+            color: var(--rose-primaire);
+            width: 20px;
+        }
+        
+        /* ========== FORFAITS ========== */
+        .forfaits-section {
+            background: var(--rose-pale);
+        }
+        
+        .forfaits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+        }
+        
+        .forfait-card {
+            background: white;
+            border-radius: 24px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .forfait-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .forfait-card.popular {
+            border: 2px solid var(--rose-primaire);
+            position: relative;
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: var(--rose-primaire);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        
+        .forfait-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .forfait-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--rose-primaire);
+            margin: 20px 0;
+        }
+        
+        .forfait-price span {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+        
+        .forfait-features {
+            list-style: none;
+            margin: 25px 0;
+        }
+        
+        .forfait-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            color: var(--text-gray);
+        }
+        
+        .forfait-features li i {
+            color: var(--rose-primaire);
+            margin-right: 10px;
+        }
+        
+        /* ========== CTA ========== */
+        .cta-section {
+            background: var(--rose-primaire);
+            border-radius: 30px;
+            margin: 40px 0;
+        }
+        
+        .cta-content {
+            padding: 50px;
+            text-align: center;
+            color: white;
+        }
+        
+        .cta-content h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        
+        .cta-content .btn-outline {
+            background: white;
+            color: var(--rose-primaire);
+            border-color: white;
+        }
+        
+        .cta-content .btn-outline:hover {
+            background: transparent;
+            color: white;
+        }
+        
+        /* ========== FOOTER ========== */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 50px 0 25px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h4 {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--rose-primaire);
+        }
+        
+        .footer-col p, .footer-col a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            line-height: 2;
+            font-size: 0.85rem;
+        }
+        
+        .footer-col a:hover {
+            color: var(--rose-primaire);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            width: 38px;
+            height: 38px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background: var(--rose-primaire);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.75rem;
+        }
+        
+        /* ========== WHATSAPP FLOATING ========== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 100;
+            animation: pulse 2s infinite;
+        }
+        
+        .whatsapp-float a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #25D366;
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+            transition: var(--transition);
+        }
+        
+        .whatsapp-float a:hover {
+            transform: scale(1.05);
+            background: #128C7E;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        /* ========== BACK TO TOP ========== */
+        .back-to-top {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 45px;
+            height: 45px;
+            background: var(--rose-primaire);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 99;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        @media (max-width: 992px) {
+            .hero-content h1 { font-size: 2.2rem; }
+            .section-header h2 { font-size: 1.8rem; }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background: white;
+                padding: 25px;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                text-align: center;
+                gap: 15px;
+                box-shadow: var(--shadow-lg);
+            }
+            .nav-links.active { display: flex; }
+            .hamburger { display: block; }
+            .services-details-grid { grid-template-columns: 1fr; }
+            .forfaits-grid { grid-template-columns: 1fr; }
+            .cta-content { padding: 30px; }
+            .cta-content h2 { font-size: 1.4rem; }
+            .footer-grid { text-align: center; }
+            .footer-col h4::after { left: 50%; transform: translateX(-50%); }
+            .social-links { justify-content: center; }
+        }
+        
+        [data-aos] {
+            opacity: 0;
+            transition: all 0.8s ease;
+        }
+        
+        [data-aos].aos-animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        [data-aos="fade-up"] {
+            transform: translateY(40px);
+        }
+    </style>
+</head>
+<body>
+
+<!-- ============================================
+     NAVBAR
+============================================ -->
+<nav class="navbar" id="navbar">
+    <div class="nav-container">
+        <div class="logo">
+            <h1>Rose<span>Beauté</span></h1>
+            <p>SALON DE COIFFURE</p>
+        </div>
+        <div class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="services.html" class="active">Services</a></li>
+            <li><a href="galerie.html">Galerie</a></li>
+            <li><a href="reservation.html" class="btn-reservation">📅 Réserver</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- ============================================
+     HERO SECTION
+============================================ -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-content" data-aos="fade-up">
+            <h1>Nos <span>Services</span></h1>
+            <p>Des prestations sur mesure pour révéler votre beauté naturelle</p>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     SERVICES DÉTAILLÉS
+============================================ -->
+<section>
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <span class="subtitle">PRESTATIONS</span>
+            <h2>Services d'Exception</h2>
+            <p>Des soins capillaires adaptés à toutes vos envies</p>
+        </div>
+        <div class="services-details-grid">
+            <div class="service-detail-card" data-aos="fade-up" data-aos-delay="100">
+                <img src="https://images.pexels.com/photos/3993449/pexels-photo-3993449.jpeg?w=600" alt="Coupe" class="service-detail-img">
+                <div class="service-detail-content">
+                    <h3>✂️ Coupe Signature</h3>
+                    <p>Coupe personnalisée adaptée à votre morphologie et à votre style de vie</p>
+                    <div class="service-price">150 DH</div>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Consultation personnalisée</li>
+                        <li><i class="fas fa-check"></i> Coupe sur mesure</li>
+                        <li><i class="fas fa-check"></i> Finition brushing</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="service-detail-card" data-aos="fade-up" data-aos-delay="150">
+                <img src="https://images.pexels.com/photos/3998423/pexels-photo-3998423.jpeg?w=600" alt="Coloration" class="service-detail-img">
+                <div class="service-detail-content">
+                    <h3>🎨 Coloration Prestige</h3>
+                    <p>Balayage, mèches, coloration végétale - Des nuances exclusives</p>
+                    <div class="service-price">300 DH</div>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Diagnostic capillaire</li>
+                        <li><i class="fas fa-check"></i> Produits haut de gamme</li>
+                        <li><i class="fas fa-check"></i> Soin après-coloration</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="service-detail-card" data-aos="fade-up" data-aos-delay="200">
+                <img src="https://images.pexels.com/photos/3993448/pexels-photo-3993448.jpeg?w=600" alt="Brushing" class="service-detail-img">
+                <div class="service-detail-content">
+                    <h3>💨 Brushing Haute Tenue</h3>
+                    <p>Brushing professionnel pour une tenue parfaite et un volume exceptionnel</p>
+                    <div class="service-price">80 DH</div>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Lavage shampoing</li>
+                        <li><i class="fas fa-check"></i> Soin adapté</li>
+                        <li><i class="fas fa-check"></i> Finition laquée</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="service-detail-card" data-aos="fade-up" data-aos-delay="250">
+                <img src="https://images.pexels.com/photos/3998420/pexels-photo-3998420.jpeg?w=600" alt="Lissage" class="service-detail-img">
+                <div class="service-detail-content">
+                    <h3>✨ Lissage Brésilien</h3>
+                    <p>Lissage sans formol, cheveux lisses, brillants et disciplinés</p>
+                    <div class="service-price">600 DH</div>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Application soin brésilien</li>
+                        <li><i class="fas fa-check"></i> Lissage progressif</li>
+                        <li><i class="fas fa-check"></i> Brillance intense</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="service-detail-card" data-aos="fade-up" data-aos-delay="300">
+                <img src="https://images.pexels.com/photos/4720258/pexels-photo-4720258.jpeg?w=600" alt="Soin" class="service-detail-img">
+                <div class="service-detail-content">
+                    <h3>💎 Soin Kératine</h3>
+                    <p>Traitement réparateur intensif pour cheveux abîmés et fragilisés</p>
+                    <div class="service-price">500 DH</div>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Diagnostic capillaire</li>
+                        <li><i class="fas fa-check"></i> Application kératine</li>
+                        <li><i class="fas fa-check"></i> Nutrition intense</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="service-detail-card" data-aos="fade-up" data-aos-delay="350">
+                <img src="https://images.pexels.com/photos/3993449/pexels-photo-3993449.jpeg?w=600" alt="Mariage" class="service-detail-img">
+                <div class="service-detail-content">
+                    <h3>👰 Coiffure Mariage</h3>
+                    <p>Forfait spéciale mariée : essai + coiffure jour J</p>
+                    <div class="service-price">800 DH</div>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Essai de coiffure</li>
+                        <li><i class="fas fa-check"></i> Coiffure jour J</li>
+                        <li><i class="fas fa-check"></i> Brushing demoiselles d'honneur</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     FORFAITS
+============================================ -->
+<section class="forfaits-section">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <span class="subtitle">FORMULES ÉCONOMIQUES</span>
+            <h2>Nos Forfaits</h2>
+            <p>Des packs avantageux pour chouchouter vos cheveux</p>
+        </div>
+        <div class="forfaits-grid">
+            <div class="forfait-card" data-aos="fade-up" data-aos-delay="100">
+                <h3>Forfait Douceur</h3>
+                <div class="forfait-price">220<span> DH</span></div>
+                <ul class="forfait-features">
+                    <li><i class="fas fa-check"></i> Coupe femme</li>
+                    <li><i class="fas fa-check"></i> Brushing</li>
+                    <li><i class="fas fa-check"></i> Soin express</li>
+                </ul>
+                <a href="reservation.html" class="btn btn-outline" style="width:100%;">Je réserve</a>
+            </div>
+            <div class="forfait-card popular" data-aos="fade-up" data-aos-delay="150">
+                <div class="popular-badge">⭐ LE PLUS POPULAIRE</div>
+                <h3>Forfait Éclat</h3>
+                <div class="forfait-price">450<span> DH</span></div>
+                <ul class="forfait-features">
+                    <li><i class="fas fa-check"></i> Coupe femme</li>
+                    <li><i class="fas fa-check"></i> Coloration ou balayage</li>
+                    <li><i class="fas fa-check"></i> Brushing + Soin</li>
+                </ul>
+                <a href="reservation.html" class="btn btn-primary" style="width:100%;">Je réserve</a>
+            </div>
+            <div class="forfait-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>Forfait Prestige</h3>
+                <div class="forfait-price">950<span> DH</span></div>
+                <ul class="forfait-features">
+                    <li><i class="fas fa-check"></i> Lissage brésilien</li>
+                    <li><i class="fas fa-check"></i> Coupe + Brushing</li>
+                    <li><i class="fas fa-check"></i> Soin réparateur</li>
+                </ul>
+                <a href="reservation.html" class="btn btn-outline" style="width:100%;">Je réserve</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     CTA SECTION
+============================================ -->
+<div class="container">
+    <div class="cta-section" data-aos="zoom-in">
+        <div class="cta-content">
+            <h2>✨ Offre de Bienvenue ✨</h2>
+            <p>-20% sur votre première prestation !</p>
+            <a href="reservation.html" class="btn btn-outline"><i class="fas fa-calendar-alt"></i> Je prends rendez-vous</a>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     FOOTER
+============================================ -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Rose Beauté</h4>
+                <p>Salon de coiffure d'exception dédié à la beauté et au bien-être des femmes.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Horaires</h4>
+                <p>Mardi - Samedi: 09:00 - 20:00</p>
+                <p>Dimanche: 10:00 - 18:00</p>
+                <p>Lundi: Fermé</p>
+            </div>
+            <div class="footer-col">
+                <h4>Liens rapides</h4>
+                <p><a href="index.html">Accueil</a></p>
+                <p><a href="services.html">Services</a></p>
+                <p><a href="galerie.html">Galerie</a></p>
+                <p><a href="reservation.html">Réservation</a></p>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p><i class="fas fa-phone"></i> 05 22 33 44 55</p>
+                <p><i class="fab fa-whatsapp"></i> 06 12 34 56 78</p>
+                <p><i class="fas fa-envelope"></i> contact@rosebeaute.ma</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2026 Rose Beauté - Salon de Coiffure pour Femmes | Tous droits réservés</p>
+        </div>
+    </div>
+</footer>
+
+<!-- ============================================
+     WHATSAPP FLOATING
+============================================ -->
+<div class="whatsapp-float">
+    <a href="https://wa.me/212612345678?text=Bonjour%20Rose%20Beaut%C3%A9%2C%20je%20souhaite%20prendre%20rendez-vous" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <span>Réservation WhatsApp</span>
+    </a>
+</div>
+
+<!-- ============================================
+     BACK TO TOP
+============================================ -->
+<div class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+</div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 800, once: true });
+    
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) navbar.classList.add('scrolled');
+        else navbar.classList.remove('scrolled');
+    });
+    
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
+    document.addEventListener('click', (e) => {
+        if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) navLinks.classList.remove('active');
+    });
+    
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) backToTop.classList.add('show');
+        else backToTop.classList.remove('show');
+    });
+    backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+</script>
+</body>
+</html>
